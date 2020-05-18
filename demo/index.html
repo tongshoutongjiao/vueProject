@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>apply 的用法以及模块的应用</div>
+
+    <script>
+        var  MyModules=(function Manager(){
+            let modules={};
+            function define(name,deps,impl){
+                for(let i=0;i<deps.length;i++){
+                    deps[i]=modules[deps[i]];
+                }
+                modules[name]=impl.apply(impl,deps);
+            };
+
+            function get(name){
+                return modules[name]
+            }
+
+            return {
+                define,
+                get
+            }
+        })();
+
+        console.log(MyModules);
+
+        MyModules.define("bar",[],function(){
+            console.log('哈哈哈')
+            function hello(who){ 
+                return 'Let me introduce:'+who
+            }
+            return {
+                hello
+            }
+        });
+
+        MyModules.define("foo",['bar'],function(){
+            let hungry='hippo';
+
+            function awesome(who){ 
+                console.log(bar.hello(hungry).toUpperCase())
+            }
+            return {
+                awesome
+            }
+        });
+
+        let bar=MyModules.get('bar');
+        let foo=MyModules.get('foo');
+
+        console.log(bar.hello('hippo'));
+        foo.awesome();
+
+
+
+
+    </script>
+    
+</body>
+</html>
