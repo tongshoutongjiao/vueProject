@@ -1,6 +1,14 @@
 <template>
   <div id="app">
-   <router-view></router-view>
+    <!-- <p>
+        <router-link to="/foo">Go to Foo</router-link>
+        <br>
+    <router-link to="/bar">Go to Bar</router-link>
+    </p> -->
+
+<router-view class="view one"></router-view>
+<router-view class="view two" name="a"></router-view>
+<router-view class="view three" name="b"></router-view>
   </div>
 </template>
 

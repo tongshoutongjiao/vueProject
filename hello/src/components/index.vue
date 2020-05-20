@@ -1,6 +1,6 @@
 <template>
 <div>
-        <h1>首页{{msg}}</h1>
+     <h1>首页{{msg}}</h1>
     <topView/>
 
 </div>
