@@ -13,7 +13,6 @@
     <script>
         var MyModules = (function Manager() {
             let modules = {};
-
             function define(name, deps, impl) {
                 for (let i = 0; i < deps.length; i++) {
                     deps[i] = modules[deps[i]];
@@ -33,9 +32,8 @@
 
         console.log(MyModules);
 
-        MyModules.define("bar", [], function() {
+        MyModules.define("bar", [], function () {
             console.log('哈哈哈');
-
             function hello(who) {
                 return 'Let me introduce:' + who
             }
@@ -44,7 +42,7 @@
             }
         });
 
-        MyModules.define("foo", ['bar'], function() {
+        MyModules.define("foo", ['bar'], function () {
             let hungry = 'hippo';
 
             function awesome(who) {
@@ -59,8 +57,12 @@
         let foo = MyModules.get('foo');
 
         console.log(bar.hello('hippo'));
-        foo.awesome();
-        ls
+        foo.awesome(); ls
+
+
+
+
+
     </script>
 
 </body>
